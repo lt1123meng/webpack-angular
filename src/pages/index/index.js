@@ -4,27 +4,34 @@
 require('./index.less')
 var indexApp = require('../../main');
 indexApp.controller('homeCtrl', function ($scope, $http, $state, $rootScope, $initData, $initBaseInfo, $server, $initVIPInfo) {
+    // 初始化数据
     if (!$rootScope.info) {
-        $initBaseInfo.init()
+        $initBaseInfo.init(VIPCallback)
     }
-    if (!$rootScope.LSvipInfo || !$rootScope.JZvipInfo) {
-        $initVIPInfo.init()
+    function VIPCallback() {
+        if (!$rootScope.LSvipInfo || !$rootScope.JZvipInfo) {
+            $initVIPInfo.init()
+        } else {
+            initJZData()
+        }
+    }
+    if(sessionStorage.crid=='LS'){
+        initLSData()
     }else{
         initJZData()
     }
-    $scope.currentStudentIndex = 0;
-    $scope.currentStudentDetail;
-    $scope.moduleList = $initData.homeModule.LS;
+    $rootScope.$on('JZVIP', function () {
+        initJZData();
+        $scope.currentStudentDetail = $rootScope.JZvipInfo[$scope.currentStudentIndex]
+    })
+    $rootScope.$on('LSVIP', function () {
+        initLSData();
+    })
+    // 切换角色
     $scope.userClick = function () {
         $rootScope.Popup = {
             mast: true,
             changeRole: true,
-        }
-    }
-    $scope.calenderClick = function () {
-        $rootScope.Popup = {
-            mast: true,
-            chooseCalender: true,
         }
     }
     $scope.chooseRole = function (role) {
@@ -42,6 +49,16 @@ indexApp.controller('homeCtrl', function ($scope, $http, $state, $rootScope, $in
             initJZData()
         }
     }
+    // 更改时间
+    $scope.calenderClick = function () {
+        $rootScope.Popup = {
+            mast: true,
+            chooseCalender: true,
+        }
+    }
+    // 切换当前学生
+    $scope.currentStudentIndex = 0;
+    $scope.currentStudentDetail;
     $scope.chooseStu = function () {
         $rootScope.Popup = {
             mast: true,
@@ -56,10 +73,14 @@ indexApp.controller('homeCtrl', function ($scope, $http, $state, $rootScope, $in
         $scope.currentStudentIndex = index
         $scope.currentStudentDetail = $rootScope.JZvipInfo[$scope.currentStudentIndex]
     }
-    $rootScope.$on('JZVIP', function () {
-        initJZData();
-        $scope.currentStudentDetail = $rootScope.JZvipInfo[$scope.currentStudentIndex]
-    })
+    // 老师角色路由跳转
+    $scope.goRoute=function(route){
+        $state.go(route);
+    }
+    // 附录
+    function initLSData() {
+        $scope.moduleList = $initData.homeModule.LS;
+    }
     function initJZData() {
         $server.getJZAllList().then(function (data) {
             if (data.status != 200) {

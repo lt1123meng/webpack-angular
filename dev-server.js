@@ -12,7 +12,6 @@ var webpack = require('webpack'),
 var compiler = webpack(webpackDevConfig);
 app.use(express.static(path.join(__dirname, 'src')));
 app.use(webpackDevMiddleware(compiler, {
-
     // public path should be the same with webpack config
     publicPath: webpackDevConfig.output.publicPath,
     noInfo: true,

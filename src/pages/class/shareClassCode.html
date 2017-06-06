@@ -1,0 +1,20 @@
+<div class="share-class-code-wrapper">
+    <div class="content-wrapper">
+        <div class="class-name">
+            <span ng-bind="codeDetail.classname"></span>
+        </div>
+        <div class="text">
+            点击分享按钮分享给你的好友
+        </div>
+        <div class="qrcode-wrapper">
+            <img class="img" ng-src="{{codeDetail.url}}">
+        </div>
+        <div class="explain">
+            说明：上方为临时二维码，17天后自动更新
+        </div>
+    </div>
+    <div class="tail-wrapper">
+        <div class="btn-wrapper back" ng-click="back()">返回</div>
+        <div class="btn-wrapper share">分享</div>
+    </div>
+</div>

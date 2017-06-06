@@ -2,6 +2,7 @@
  * Created by LX on 2017/5/18.
  */
 import INIT from './init';
+import backTPL from './component/back/back.html'
 import footerLSTPL from './component/footer/footerLS.html'
 import footerJZTPL from './component/footer/footerJZ.html'
 import searchTPL from './component/search/search.html'
@@ -9,6 +10,23 @@ import mastTPL from './component/mast/mast.html'
 import calendarTPL from './component/calendar/calendar.html'
 var indexApp = require('./main');
 indexApp
+    .directive('dirBack', function ($state) {
+        return {
+            restrict: 'E',
+            template: backTPL,
+            replace: true,
+            link: function (scope, element, attr) {
+                require('./component/back/back.less')
+                element.bind('click', function () {
+                    if (attr.back) {
+                        $state.go(attr.back)
+                    } else {
+                        window.history.go(-1);
+                    }
+                })
+            }
+        };
+    })
     .directive('dirFooterLs', function () {
         return {
             restrict: 'E',
@@ -118,6 +136,7 @@ indexApp
                     if (choosed) return
                     if (!canChoose) return
                     if (day == scope.calendarSelect.day) return
+                    if (day == '今天') day = moment().date();
                     scope.calendarSelect.day = day;
                     scope.calendarSelect.month = scope.calendarCurrent.month;
                     scope.calendarSelect.year = scope.calendarCurrent.year;
@@ -151,15 +170,25 @@ indexApp
                     }
                     for (let i = 1; i <= daysInMonth; i++) {
                         let oneDay = {};
-                        if (scope.calendarToday.day == i && scope.calendarCurrent.month == scope.calendarToday.month && scope.calendarCurrent.year == scope.calendarToday.year) {
-                            oneDay.text = '今天';
+                        if (scope.calendarCurrent.month == scope.calendarToday.month && scope.calendarCurrent.year == scope.calendarToday.year) {
+                            if (scope.calendarToday.day == i) {
+                                oneDay.text = '今天';
+                                oneDay.canChoose = true;
+                            } else {
+                                oneDay.text = i;
+                                if (scope.calendarToday.day >= i) {
+                                    oneDay.canChoose = true;
+                                } else {
+                                    oneDay.canChoose = false;
+                                }
+                            }
                         } else {
                             oneDay.text = i;
+                            oneDay.canChoose = true;
                         }
                         if (scope.calendarSelect.day == i && scope.calendarCurrent.month == scope.calendarSelect.month && scope.calendarCurrent.year == scope.calendarSelect.year) {
                             oneDay.choosed = true;
                         }
-                        oneDay.canChoose = true;
                         daysList.push(oneDay)
                     }
                     for (let i = 1; i <= 6 - dayEndWeek; i++) {
@@ -192,7 +221,17 @@ indexApp
                 return $http.get(INIT.BASE_VIP + 'users/' + sessionStorage.oid + '/' + sessionStorage.crid)
             },
             getJZAllList: function () {
-                return $http.get('../../json/jz-index.json')
+                return $http.get('/json/jz-index.json')
+            },
+            getClassList: function () {
+                return $http.get(INIT.BASE_URI + '/user/class/' + sessionStorage.oid)
+            },
+            getShareClassCodeList: function (class_id) {
+                return $http.get(INIT.BASE_URI + '/user/qrcode/' + sessionStorage.oid, {
+                    params: {
+                        class_id: class_id
+                    }
+                })
             }
         }
     })
@@ -202,6 +241,11 @@ indexApp
                 LS: [{
                     title: '',
                     list: [
+                        {
+                            name: '班级',
+                            route: 'class',
+                            icon: 'class.png'
+                        },
                         {
                             name: '成绩',
                             route: 'grade',
@@ -561,10 +605,10 @@ indexApp
                                 $rootScope.info.rid.push('LS')
                             }
                         }
-                        if (sessionStorage.crid != 'undefined') {
-                            $rootScope.info.crid = sessionStorage.crid
-                        } else {
+                        if (typeof(sessionStorage.crid) == 'undefined' || sessionStorage.crid == 'undefined') {
                             sessionStorage.crid = $rootScope.info.crid
+                        } else {
+                            $rootScope.info.crid = sessionStorage.crid
                         }
                         if (callback) {
                             callback()
@@ -616,6 +660,7 @@ indexApp
                             } else {
                                 $rootScope.vip = $rootScope.LSvipInfo.level;
                             }
+                            $rootScope.$emit('LSVIP')
                         } else {
                             $rootScope.JZvipInfo = []
                             $rootScope.vip = 1

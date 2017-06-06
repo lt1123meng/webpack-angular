@@ -20,4 +20,5 @@
         </div>
     </div>
 </div>
-<dir-footer-jz></dir-footer-jz>
+<dir-footer-ls ng-if="info.crid=='LS'"></dir-footer-ls>
+<dir-footer-jz ng-if="info.crid!='LS'"></dir-footer-jz>

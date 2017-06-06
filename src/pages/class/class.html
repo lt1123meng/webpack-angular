@@ -1,0 +1,51 @@
+<div class="class-outer-wrapper">
+    <div class="header-common-wrapper">
+        <div class="box">
+            <div class="inner-box active">
+                <div class="inner">
+                    <div class="name">我的班级
+                        <span ng-if="classList">
+                            (<span ng-bind="classList.length"></span>)
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="inner-box">
+                <div class="inner">
+                    <div class="name">创建班级</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content-wrapper">
+        <div class="list-wrapper">
+            <div class="item-wrapper" ng-repeat="item in classList">
+                <div class="box">
+                    <div class="icon-wrapper" ng-click="shareClass(item.id)">
+                        <div class="icon">
+                            <img class="img" src="./images/footer/shop.png" alt="">
+                        </div>
+                        <div class="class-code">
+                            <span>标识</span>
+                            <span ng-bind="item.code"></span>
+                        </div>
+                    </div>
+                    <div class="detail-wrapper">
+                        <p class="class-name" ng-bind="item.name"></p>
+                        <p class="bind">
+                            <span>已绑</span>
+                            <span>(
+                                <span ng-bind="'老师'+item.teachernum"></span>
+                                <span ng-bind="'家长'+item.parentnum"></span>
+                                <span ng-bind="'学生'+item.bindstunum"></span>)
+                            </span>
+                        </p>
+                        <p class="organization-name" ng-bind="item.orgname"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<dir-footer-jz ng-if=""></dir-footer-jz>
+<dir-footer-ls></dir-footer-ls>

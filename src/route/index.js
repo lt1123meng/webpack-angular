@@ -7,6 +7,7 @@ require('../pages/pre/pre');
 require('../pages/index/index');
 require('../pages/me/me');
 require('../pages/func/func');
+require('../pages/class/class');
 import preTPL from '../pages/pre/pre.html';
 import homeTPL from '../pages/index/index.html';
 import meTPL from '../pages/me/me.html';
@@ -15,6 +16,8 @@ import regularTPL from '../pages/me/regular.html';
 import integrateTPL from '../pages/me/integrate.html';
 import orderTPL from '../pages/me/order.html';
 import funcTPL from '../pages/func/func.html';
+import classTPL from '../pages/class/class.html';
+import shareClassCodeTPL from '../pages/class/shareClassCode.html';
 indexApp.config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise("pre");
     $stateProvider
@@ -60,5 +63,16 @@ indexApp.config(function ($stateProvider, $urlRouterProvider) {
             url: "/order",
             controller: "orderCtrl",
             template: orderTPL,
+        })
+        // 班级
+        .state("class", {
+            url: "/class",
+            controller: "classCtrl",
+            template: classTPL,
+        })
+        .state("share", {
+            url: "/share/:class_id",
+            controller: "shareClassCodeCtrl",
+            template: shareClassCodeTPL,
         })
 })
