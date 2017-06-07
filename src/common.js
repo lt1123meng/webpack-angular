@@ -221,7 +221,7 @@ indexApp
                 return $http.get(INIT.BASE_VIP + 'users/' + sessionStorage.oid + '/' + sessionStorage.crid)
             },
             getJZAllList: function () {
-                return $http.get('/json/jz-index.json')
+                return $http.get('./json/jz-index.json')
             },
             getClassList: function () {
                 return $http.get(INIT.BASE_URI + '/user/class/' + sessionStorage.oid)

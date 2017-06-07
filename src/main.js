@@ -2,6 +2,7 @@
  * Created by LX on 2017/5/18.
  */
 require('./common.less')
+require('./fcommon.less')
 var angular=require('angular')
 require('angular-ui-router')
 var indexApp=angular.module('indexApp',['ui.router']);
