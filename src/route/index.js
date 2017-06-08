@@ -18,6 +18,7 @@ import orderTPL from '../pages/me/order.html';
 import funcTPL from '../pages/func/func.html';
 import classTPL from '../pages/class/class.html';
 import shareClassCodeTPL from '../pages/class/shareClassCode.html';
+import addClassTPL from '../pages/class/addClass.html';
 indexApp.config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise("pre");
     $stateProvider
@@ -74,5 +75,10 @@ indexApp.config(function ($stateProvider, $urlRouterProvider) {
             url: "/share/:class_id",
             controller: "shareClassCodeCtrl",
             template: shareClassCodeTPL,
+        })
+        .state("add_class", {
+            url: "/add_class",
+            controller: "addClassCtrl",
+            template: addClassTPL,
         })
 })

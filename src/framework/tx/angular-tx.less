@@ -1,0 +1,64 @@
+@common-color: rgb(77, 163, 224);
+@green-color: rgb(67, 186, 132);
+@red-color: rgb(233, 105, 95);
+@orange-color: rgb(247, 181, 44);
+@pink-bg-color: rgb(255, 246, 228);
+@word-grey: rgb(86, 86, 86);
+@light-grey: #A2A2A2;
+@border-color: rgba(7, 17, 27, 0.07);
+@green-bg-color: rgb(242, 249, 254);
+input {
+  background: no-repeat 0 0 scroll;
+  border: none;
+  outline: medium;
+}
+.tx-input-lists {
+  display: block;
+  .tx-input-wrapper {
+    display: block;
+    position: relative;
+    padding: 0 12px;
+    height: 56px;
+    background-color: #fff;
+    .inner-wrapper {
+      height: 56px;
+      box-sizing: border-box;
+      border-bottom: 1px solid @border-color;
+      .tx-input-label {
+        display: block;
+        position: absolute;
+        top: 28px;
+        font-size: 16px;
+        z-index: 0;
+        transition: all 150ms ease-in-out;
+      }
+      .tx-input {
+        display: block;
+        position: relative;
+        top: 20px;
+        .text-input {
+          margin: 8px 0;
+          padding: 0;
+          border: 0;
+          height: 20px;
+          width: 100%;
+          font-size: 16px;
+          background-color: rgba(0,0,0,0);
+        }
+      }
+    }
+    &.tx-input-focus {
+      .inner-wrapper {
+        .tx-input-label {
+          top: 4px;
+          font-size: 13px;
+        }
+      }
+    }
+    &:last-child{
+      .inner-wrapper{
+        border-bottom: 0;
+      }
+    }
+  }
+}

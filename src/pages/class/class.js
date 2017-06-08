@@ -27,12 +27,19 @@ indexApp
                 return
             }
             data = data.data
-            if(data.status) {
+            if (data.status) {
                 $scope.codeDetail = data.msg
             }
         })
         // 返回
-        $scope.back=function(){
+        $scope.back = function () {
             window.history.go(-1)
         }
+    })
+    .controller('addClassCtrl', function ($server, $scope, $http, $state, $stateParams, $rootScope, $initData, $initBaseInfo, $initIntegrate) {
+        $server.getSubject().then(function (data) {
+            if (data.status != 200) return;
+            $scope.subjectList = data.data;
+            $scope.subjectId=$scope.subjectList[0].name;
+        })
     })

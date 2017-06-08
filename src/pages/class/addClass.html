@@ -1,0 +1,24 @@
+<div class="add-class-wrapper">
+    <dir-back></dir-back>
+    <div class="header-wrapper">
+        <img class="icon" src="./images/function/class.png" alt="">
+        <p class="tip">填写下面表单，快速创建班级</p>
+    </div>
+    <tx-input-lists>
+        <tx-input-wrapper>
+            <tx-input-label>学校名称</tx-input-label>
+            <tx-input name="schoolName" value="{{schoolName}}"></tx-input>
+        </tx-input-wrapper>
+        <tx-input-wrapper>
+            <tx-input-label>班级名称</tx-input-label>
+            <tx-input name="className" value="{{className}}"></tx-input>
+        </tx-input-wrapper>
+    </tx-input-lists>
+    <div class="choose-subject-wrapper">
+        <select class="form-control" ng-model="subjectId" ng-options="item.name as item.value for item in subjectList">
+        </select>
+    </div>
+    <div class="tail-wrapper">
+        <div class="tail">创建</div>
+    </div>
+</div>

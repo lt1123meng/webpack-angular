@@ -209,7 +209,13 @@ indexApp
                 return $http.get(INIT.BASE_URI + '/user/get/' + sessionStorage.oid)
             },
             getRole: function () {
-                return $http.get(INIT.BASE_URI + 'user/role/' + sessionStorage.oid)
+                return $http.get(INIT.BASE_URI + '/user/role/' + sessionStorage.oid)
+            },
+            getClassList: function () {
+                return $http.get(INIT.BASE_URI + '/user/class/' + sessionStorage.oid)
+            },
+            getSubject: function () {
+                return $http.get(INIT.BASE_URI + '/subject/list')
             },
             getIntegrate: function () {
                 return $http.get(INIT.BASE_URI + '/integral/getIngegralSum/' + sessionStorage.oid)
@@ -222,9 +228,6 @@ indexApp
             },
             getJZAllList: function () {
                 return $http.get('./json/jz-index.json')
-            },
-            getClassList: function () {
-                return $http.get(INIT.BASE_URI + '/user/class/' + sessionStorage.oid)
             },
             getShareClassCodeList: function (class_id) {
                 return $http.get(INIT.BASE_URI + '/user/qrcode/' + sessionStorage.oid, {

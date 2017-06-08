@@ -2,7 +2,7 @@
 
 .class-outer-wrapper {
   position: absolute;
-  top:0;
+  top: 0;
   bottom: 54px;
   overflow: scroll;
   width: 100%;
@@ -43,7 +43,7 @@
           .icon-wrapper {
             flex: 0 0 96px;
             -webkit-flex: 0 0 96px;
-            .icon{
+            .icon {
               width: 50px;
               height: 50px;
               margin: 0 auto;
@@ -51,14 +51,14 @@
               text-align: center;
               background-color: rgba(77, 163, 224, 0.2);
               border-radius: 2px;
-              .img{
+              .img {
                 display: inline-block;
                 width: 26px;
                 vertical-align: top;
                 margin-top: 12px;
               }
             }
-            .class-code{
+            .class-code {
               margin-top: 3px;
               text-align: center;
               font-size: 13px;
@@ -67,17 +67,17 @@
           .detail-wrapper {
             flex: 1;
             -webkit-flex: 1;
-            .class-name{
+            .class-name {
               font-size: 17px;
               font-weight: bold;
               margin-bottom: 8px;
             }
-            .bind{
+            .bind {
               font-size: 15px;
               font-weight: bold;
               margin-bottom: 6px;
             }
-            .organization-name{
+            .organization-name {
               font-size: 13px;
             }
           }
@@ -86,7 +86,8 @@
     }
   }
 }
-.share-class-code-wrapper{
+
+.share-class-code-wrapper {
   position: absolute;
   width: 100%;
   top: 0;
@@ -94,40 +95,40 @@
   padding: 0 26px;
   box-sizing: border-box;
   background-color: @common-color;
-  .content-wrapper{
+  .content-wrapper {
     margin-top: 26px;
     padding: 10% 12px;
     background-color: #fff;
     border-radius: 12px;
     text-align: center;
-    .class-name{
+    .class-name {
       margin-bottom: 16px;
       font-size: 22px;
       font-weight: bold;
     }
-    .text{
+    .text {
 
     }
-    .qrcode-wrapper{
+    .qrcode-wrapper {
       padding: 0 8%;
-      .img{
+      .img {
         display: inline-block;
         width: 100%;
       }
     }
-    .explain{
+    .explain {
       font-size: 15px;
       font-weight: bold;
       color: @red-color;
     }
   }
-  .tail-wrapper{
+  .tail-wrapper {
     display: flex;
     display: -webkit-flex;
     justify-content: space-between;
     margin-top: 16px;
     padding: 0 20px;
-    .btn-wrapper{
+    .btn-wrapper {
       flex: 0 0 100px;
       -webkit-flex: 0 0 100px;
       height: 36px;
@@ -136,6 +137,42 @@
       background-color: #fff;
       border-radius: 8px;
 
+    }
+  }
+}
+
+.add-class-wrapper {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: rgb(248, 248, 248);
+  .header-wrapper {
+    margin-top: 22px;
+    text-align: center;
+    .icon {
+      width: 66px;
+    }
+    .tip {
+      margin: 12px 0 18px 0;
+      padding: 4px 0;
+      color: @red-color;
+      background-color: rgba(233, 105, 95, 0.3);
+
+    }
+  }
+  .choose-subject-wrapper {
+    margin: 12px 0
+  }
+  .tail-wrapper {
+    margin-top: 26px;
+    .tail {
+      height: 36px;
+      line-height: 36px;
+      background-color: @common-color;
+      border-radius: 6px;
+      color: #fff;
+      text-align: center;
     }
   }
 }
