@@ -214,6 +214,9 @@ indexApp
             getClassList: function () {
                 return $http.get(INIT.BASE_URI + '/user/class/' + sessionStorage.oid)
             },
+            getCreateClass: function (params) {
+                return $http.get(INIT.BASE_URI + '/class/create/' + sessionStorage.oid, params)
+            },
             getSubject: function () {
                 return $http.get(INIT.BASE_URI + '/subject/list')
             },
@@ -235,6 +238,21 @@ indexApp
                         class_id: class_id
                     }
                 })
+            },
+            postWorkAll: function (workDate) {
+                return $http.post(INIT.BASE_WORK +
+                    'homework/queryT/all/' +
+                    sessionStorage.crid + '/' + sessionStorage.oid,
+                    {
+                        work_date: workDate
+                    }
+                )
+            },
+            delTKWork: function (workId) {
+                return $http.post(INIT.BASE_WORK +
+                    'homework/delete/' + workId + '/' +
+                    sessionStorage.crid + '/' + sessionStorage.oid
+                )
             }
         }
     })
@@ -256,7 +274,7 @@ indexApp
                         },
                         {
                             name: '作业',
-                            route: 'work',
+                            route: 'work_ls',
                             icon: 'work.png'
                         },
                         {

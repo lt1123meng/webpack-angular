@@ -7,11 +7,14 @@
 @light-grey: #A2A2A2;
 @border-color: rgba(7, 17, 27, 0.07);
 @green-bg-color: rgb(242, 249, 254);
+@mast-color: rgba(7, 17, 27, 0.3);
 input {
   background: no-repeat 0 0 scroll;
   border: none;
   outline: medium;
 }
+
+//输入表单
 .tx-input-lists {
   display: block;
   .tx-input-wrapper {
@@ -43,7 +46,7 @@ input {
           height: 20px;
           width: 100%;
           font-size: 16px;
-          background-color: rgba(0,0,0,0);
+          background-color: rgba(0, 0, 0, 0);
         }
       }
     }
@@ -55,9 +58,141 @@ input {
         }
       }
     }
-    &:last-child{
-      .inner-wrapper{
+    &:last-child {
+      .inner-wrapper {
         border-bottom: 0;
+      }
+    }
+  }
+}
+
+//toast 弹出提示语
+.toast-mast {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: @mast-color;
+  opacity: 0;
+  &.toast-show {
+    opacity: 1;
+  }
+  &.toast-hidden {
+    opacity: 0;
+  }
+  .toast-container {
+    position: absolute;
+    top: 32%;
+    left: 50%;
+    margin-left: -60px;
+    padding: 22px 12px;
+    box-sizing: border-box;
+    width: 120px;
+    background-color: rgba(7, 17, 27, 0.6);
+    border-radius: 9px;
+    .toast-wrapper {
+      text-align: center;
+      .icon {
+        width: 50px;
+      }
+      .text {
+        margin-top: 5px;
+        text-align: center;
+        color: #fff;
+      }
+    }
+  }
+}
+
+.toptip-mast {
+  position: absolute;
+  top: -60px;
+  padding: 6px 5%;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 111;
+  color: #fff;
+  transition: all .3s ease-in-out;
+  -webkit-transition: all .3s ease-in-out;
+  &.toptip-show {
+    top: 0;
+  }
+  &.toptip-hidden {
+    top: -60px;
+  }
+  .toptip-container {
+    position: relative;
+    padding: 12px 12px 12px 40px;
+    background-color: @green-color;
+    border-radius: 8px;
+    &.success {
+      background-color: @green-color;
+    }
+    &.error {
+      background-color: @red-color;
+    }
+    .icon {
+      position: absolute;
+      top: 50%;
+      left: 12px;
+      margin-top: -9px;
+      height: 14px;
+    }
+  }
+}
+
+.confirm-mast {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: @mast-color;
+  opacity: 0;
+  z-index: 999;
+  transition: all .3s ease-in-out;
+  -webkit-transition: all .3s ease-in-out;
+  &.confirm-show {
+    opacity: 1;
+  }
+  &.confirm-hidden {
+    opacity: 0;
+  }
+  .confirm-container {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    margin-left: -136px;
+    box-sizing: border-box;
+    width: 272px;
+    background-color: #fff;
+    border-radius: 6px;
+    text-align: center;
+    .confirm-hd {
+      padding: 1.2em 20px .5em;
+      font-size: 17px;
+    }
+    .confirm-bd {
+      margin-bottom: 20px;
+      padding: 0 20px;
+      font-size: 15px;
+      color: #888;
+      max-height: 200px;
+      overflow: scroll;
+    }
+    .confirm-fd {
+      font-size: 0;
+      border-top: 1px solid @border-color;
+      .box {
+        display: inline-block;
+        width: 50%;
+        height: 42px;
+        line-height: 42px;
+        font-size: 17px;
+        &:last-child {
+          color: @green-color;
+          box-sizing: border-box;
+          border-left: 1px solid @border-color;
+        }
       }
     }
   }

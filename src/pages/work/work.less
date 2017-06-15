@@ -1,0 +1,100 @@
+@import "../../base";
+
+.work-ls-wrapper {
+  position: absolute;
+  top: 0;
+  bottom: 54px;
+  width: 100%;
+  overflow: scroll;
+  .content-wrapper {
+    padding: 12px 8px 8px 8px;
+    .day-wrapper {
+      margin-bottom: 12px;
+      padding: 6px;
+      background-color: #fff;
+      border-radius: 6px;
+      box-shadow: 0 0 8px rgba(7,17,27,0.2);
+      .date-wrapper {
+        line-height: 30px;
+        font-size: 15px;
+      }
+      .works-wrapper {
+        .work-wrapper {
+          display: flex;
+          display: -webkit-flex;
+          border-top: 1px solid @border-color;
+          .tag-wrapper {
+            flex: 0 0 32px;
+            -webkit-flex: 0 0 32px;
+            .tag{
+              width: 26px;
+            }
+          }
+          .info-wrapper {
+            flex: 1;
+            -webkit-flex: 1;
+            .work-name{
+              font-size: 15px;
+              font-weight: bold;
+              line-height: 30px;
+            }
+            .class-name{
+              line-height: 26px;
+            }
+            .time{
+              font-size: 13px;
+              color: @light-grey;
+            }
+          }
+          .detail-wrapper {
+            flex: 0 0 120px;
+            -webkit-flex: 0 0 120px;
+            .number-wrapper {
+              margin-top: 6px;
+              .number {
+                display: inline-block;
+                padding: 5px 0px;
+                box-sizing: border-box;
+                width: 36px;
+                height: 34px;
+                line-height: 12px;
+                text-align: center;
+                color: #fff;
+                vertical-align: top;
+                font-size: 12px;
+                border-radius: 4px;
+                &:nth-child(1){
+                  background-color: @red-color;
+                }
+                &:nth-child(2){
+                  background-color: @common-color;
+                }
+                &:nth-child(3){
+                  background-color: @green-color;
+                }
+              }
+            }
+            .del-wrapper {
+              margin-top: 6px;
+              text-align: right;
+              .tag{
+                padding: 4px 8px;
+                width: 20px;
+                vertical-align: top;
+              }
+            }
+          }
+        }
+      }
+    }
+    .more-wrapper{
+      padding: 12px;
+      color: @common-color;
+      text-align: center;
+      font-size: 15px;
+      &.no-more{
+        color: @light-grey;
+      }
+    }
+  }
+}

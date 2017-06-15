@@ -1,0 +1,61 @@
+<div class="work-ls-wrapper">
+    <div class="header-common-wrapper">
+        <div class="box">
+            <div class="inner-box active">
+                <div class="inner">
+                    <div class="text">
+                        作业列表
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content-wrapper">
+        <div class="day-wrapper" ng-repeat="dayList in homeworkList">
+            <div class="date-wrapper">
+                <span ng-bind="dayList.pubtime"></span>
+            </div>
+            <div class="works-wrapper">
+                <div class="work-wrapper" ng-repeat="work in dayList.datas">
+                    <div class="tag-wrapper">
+                        <img class="tag" ng-if="work.type=='TK'" src="./images/icon/tag-library.png">
+                        <img class="tag" ng-if="work.type=='TW'" src="./images/icon/tag-picture.png">
+                    </div>
+                    <div class="info-wrapper">
+                        <div class="work-name" ng-bind="work.workname"></div>
+                        <div class="class-name" ng-bind="work.className"></div>
+                        <div class="time" ng-bind="work.create_time"></div>
+                    </div>
+                    <div class="detail-wrapper">
+                        <div class="number-wrapper">
+                            <div class="number no-watch">
+                                <p ng-bind="work.noWatch"></p>
+                                <p>未读</p>
+                            </div>
+                            <div class="number no-submit">
+                                <p ng-bind="work.noSubmit"></p>
+                                <p>未交</p>
+                            </div>
+                            <div class="number no-correct">
+                                <p ng-bind="work.noCorrect"></p>
+                                <p>未批</p>
+                            </div>
+                        </div>
+                        <div class="del-wrapper">
+                            <img ng-click="delTKWork($parent.$index,$index,work.id)"
+                                 class="tag"
+                                 src="./images/icon/tag-trash.png">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="more-wrapper"
+             ng-class="{'no-more':more=='no'}"
+             ng-click="getWorkList()">
+            <span ng-if="more!='no'">点击加载更多</span>
+            <span ng-if="more=='no'">没有更多数据</span>
+        </div>
+    </div>
+</div>
+<dir-footer-ls></dir-footer-ls>

@@ -7,11 +7,15 @@
     <tx-input-lists>
         <tx-input-wrapper>
             <tx-input-label>学校名称</tx-input-label>
-            <tx-input name="schoolName" value="{{schoolName}}"></tx-input>
+            <tx-input name="schoolName">
+                <input class="text-input" type="text" ng-focus="focus()" ng-blur="blur()" ng-change="change()" ng-model="schoolName"/>
+            </tx-input>
         </tx-input-wrapper>
         <tx-input-wrapper>
             <tx-input-label>班级名称</tx-input-label>
-            <tx-input name="className" value="{{className}}"></tx-input>
+            <tx-input name="className">
+                <input class="text-input" type="text" ng-focus="focus()" ng-blur="blur()" ng-change="change()" ng-model="className"/>
+            </tx-input>
         </tx-input-wrapper>
     </tx-input-lists>
     <div class="choose-subject-wrapper">
@@ -19,6 +23,6 @@
         </select>
     </div>
     <div class="tail-wrapper">
-        <div class="tail">创建</div>
+        <div class="tail" ng-click="createClass()">创建</div>
     </div>
 </div>

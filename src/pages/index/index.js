@@ -47,6 +47,8 @@ indexApp.controller('homeCtrl', function ($scope, $http, $state, $rootScope, $in
         }
         if (role != 'LS') {
             initJZData()
+        }else{
+            initLSData()
         }
     }
     // 更改时间

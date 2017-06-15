@@ -8,6 +8,7 @@ require('../pages/index/index');
 require('../pages/me/me');
 require('../pages/func/func');
 require('../pages/class/class');
+require('../pages/work/work');
 import preTPL from '../pages/pre/pre.html';
 import homeTPL from '../pages/index/index.html';
 import meTPL from '../pages/me/me.html';
@@ -19,6 +20,7 @@ import funcTPL from '../pages/func/func.html';
 import classTPL from '../pages/class/class.html';
 import shareClassCodeTPL from '../pages/class/shareClassCode.html';
 import addClassTPL from '../pages/class/addClass.html';
+import workLSTPL from '../pages/work/workLS.html';
 indexApp.config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise("pre");
     $stateProvider
@@ -80,5 +82,11 @@ indexApp.config(function ($stateProvider, $urlRouterProvider) {
             url: "/add_class",
             controller: "addClassCtrl",
             template: addClassTPL,
+        })
+        // 作业
+        .state("work_ls", {
+            url: "/work_ls",
+            controller: "workLSCtrl",
+            template: workLSTPL,
         })
 })
