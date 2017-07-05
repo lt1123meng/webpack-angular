@@ -45,7 +45,7 @@ indexApp
         })
         // 提交创建班级申请
         $scope.createClass = function () {
-            let params = {
+            var params = {
                 orgname: $scope.schoolName,
                 classname: $scope.className,
                 num: 0,

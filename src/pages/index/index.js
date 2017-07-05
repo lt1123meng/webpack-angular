@@ -15,9 +15,10 @@ indexApp.controller('homeCtrl', function ($scope, $http, $state, $rootScope, $in
             initJZData()
         }
     }
-    if(sessionStorage.crid=='LS'){
+
+    if (sessionStorage.crid == 'LS') {
         initLSData()
-    }else{
+    } else {
         initJZData()
     }
     $rootScope.$on('JZVIP', function () {
@@ -47,7 +48,7 @@ indexApp.controller('homeCtrl', function ($scope, $http, $state, $rootScope, $in
         }
         if (role != 'LS') {
             initJZData()
-        }else{
+        } else {
             initLSData()
         }
     }
@@ -76,13 +77,14 @@ indexApp.controller('homeCtrl', function ($scope, $http, $state, $rootScope, $in
         $scope.currentStudentDetail = $rootScope.JZvipInfo[$scope.currentStudentIndex]
     }
     // 老师角色路由跳转
-    $scope.goRoute=function(route){
+    $scope.goRoute = function (route) {
         $state.go(route);
     }
     // 附录
     function initLSData() {
         $scope.moduleList = $initData.homeModule.LS;
     }
+
     function initJZData() {
         $server.getJZAllList().then(function (data) {
             if (data.status != 200) {

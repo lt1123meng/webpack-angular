@@ -141,7 +141,7 @@ input {
   }
 }
 
-.confirm-mast {
+.popup-mast {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -151,13 +151,13 @@ input {
   z-index: 999;
   transition: all .3s ease-in-out;
   -webkit-transition: all .3s ease-in-out;
-  &.confirm-show {
+  &.popup-show {
     opacity: 1;
   }
-  &.confirm-hidden {
+  &.popup-hidden {
     opacity: 0;
   }
-  .confirm-container {
+  .popup-container {
     position: absolute;
     top: 25%;
     left: 50%;
@@ -167,19 +167,20 @@ input {
     background-color: #fff;
     border-radius: 6px;
     text-align: center;
-    .confirm-hd {
+    .popup-hd {
       padding: 1.2em 20px .5em;
       font-size: 17px;
     }
-    .confirm-bd {
+    .popup-bd {
       margin-bottom: 20px;
       padding: 0 20px;
       font-size: 15px;
       color: #888;
-      max-height: 200px;
+      max-height: 100px;
       overflow: scroll;
+      word-break: break-all;
     }
-    .confirm-fd {
+    .popup-fd {
       font-size: 0;
       border-top: 1px solid @border-color;
       .box {
@@ -188,10 +189,11 @@ input {
         height: 42px;
         line-height: 42px;
         font-size: 17px;
-        &:last-child {
-          color: @green-color;
+        color: @green-color;
+        &.cancel {
+          color: #888;
           box-sizing: border-box;
-          border-left: 1px solid @border-color;
+          border-right: 1px solid @border-color;
         }
       }
     }

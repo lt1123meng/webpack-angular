@@ -66,7 +66,7 @@ indexApp
                 require('./component/mast/mast.less')
                 angular.element(element).bind('click', function () {
                     $rootScope.$apply(function () {
-                        for (let key in $rootScope.Popup) {
+                        for (var key in $rootScope.Popup) {
                             $rootScope.Popup[key] = false
                         }
                     })
@@ -142,7 +142,7 @@ indexApp
                     scope.calendarSelect.year = scope.calendarCurrent.year;
                     scope.calendarSelect.week = '星期' + scope.weekList[moment(scope.calendarSelect.year + '-' + scope.calendarSelect.month + '-' + scope.calendarSelect.day, "YYYY-MM-DD").day()];
                     initCalendar();
-                    for (let key in $rootScope.Popup) {
+                    for (var key in $rootScope.Popup) {
                         $rootScope.Popup[key] = false
                     }
                 }
@@ -161,15 +161,15 @@ indexApp
                     var dayEndWeek = currentMonent.date(daysInMonth).day()
                     var prevDaysInMonth = prevMonent.daysInMonth()
                     var nextDaysInMonth = nextMonent.daysInMonth()
-                    for (let i = dayStartWeek; i > 0; i--) {
-                        let oneDay = {};
+                    for (var i = dayStartWeek; i > 0; i--) {
+                        var oneDay = {};
                         oneDay.text = prevDaysInMonth - i + 1;
                         oneDay.canChoose = false;
                         oneDay.choosed = false;
                         daysList.push(oneDay)
                     }
-                    for (let i = 1; i <= daysInMonth; i++) {
-                        let oneDay = {};
+                    for (var i = 1; i <= daysInMonth; i++) {
+                        var oneDay = {};
                         if (scope.calendarCurrent.month == scope.calendarToday.month && scope.calendarCurrent.year == scope.calendarToday.year) {
                             if (scope.calendarToday.day == i) {
                                 oneDay.text = '今天';
@@ -191,8 +191,8 @@ indexApp
                         }
                         daysList.push(oneDay)
                     }
-                    for (let i = 1; i <= 6 - dayEndWeek; i++) {
-                        let oneDay = {};
+                    for (var i = 1; i <= 6 - dayEndWeek; i++) {
+                        var oneDay = {};
                         oneDay.text = i;
                         oneDay.canChoose = false;
                         oneDay.choosed = false;
@@ -253,6 +253,21 @@ indexApp
                     'homework/delete/' + workId + '/' +
                     sessionStorage.crid + '/' + sessionStorage.oid
                 )
+            },
+            delTWWork: function (workId, classId) {
+                return $http.post(INIT.BASE_URI + 'homework/deleteHomework/' +
+                    workId + '/' + classId + '/' +
+                    sessionStorage.crid + '/' + sessionStorage.oid)
+            },
+            getTWWei: function (type, classId, workId) {
+                return $http.post(INIT.BASE_URI +
+                    'homework/' + type + '/' + workId + '/' + classId + '/' +
+                    sessionStorage.crid + '/' + sessionStorage.oid
+                )
+            },
+            getTKWei: function (type, workID) {
+                return $http.get(INIT.BASE_WORK + 'homework/' + type + '/'
+                    + sessionStorage.crid + '/' + sessionStorage.oid + '/' + workID)
             }
         }
     })

@@ -259,7 +259,7 @@ TXMoudle
             }
         }
     ])
-    .factory('$txConfirm', [
+    .factory('$txPopup', [
         '$q',
         '$timeout',
         '$rootScope',
@@ -267,20 +267,21 @@ TXMoudle
         '$txBody',
         function ($q, $timeout, $rootScope, $compile, $txBody) {
             var $txToast = {
-                success: showConfirm,
-                _createPopup: createConfirm,
+                alert: showAlert,
+                confirm: showConfirm,
+                _createPopup: createPupop,
             };
             return $txToast;
-            function createConfirm(options) {
+            function createPupop(options,type) {
                 var self = {};
                 self.show = function () {
-                    self.element.removeClass('confirm-hidden');
-                    self.element.addClass('confirm-show');
+                    self.element.removeClass('popup-hidden');
+                    self.element.addClass('popup-show');
                 };
                 self.hide = function () {
                     $timeout(function () {
-                        self.element.removeClass('confirm-show');
-                        self.element.addClass('confirm-hidden');
+                        self.element.removeClass('popup-show');
+                        self.element.addClass('popup-hidden');
                         $timeout(function () {
                             self.remove();
                             if (options.callback) {
@@ -289,7 +290,6 @@ TXMoudle
                         }, 500)
                     }, options.delay);
                 };
-
                 self.remove = function () {
                     self.element.remove();
                     self.scope.$destroy();
@@ -308,7 +308,7 @@ TXMoudle
                     }
                 }, options || {});
                 self.scope = (options.scope || $rootScope).$new();
-                self.element = jqLite(CONFIRM_TPL);
+                self.element = jqLite(POPUP_TPL);
                 self.responseDeferred = $q.defer();
                 $txBody.append(self.element);
                 $compile(self.element)(self.scope);
@@ -324,18 +324,29 @@ TXMoudle
                     confirmBtn: function () {
                         self.hide();
                         options.confirmBtn()
-                    }
+                    },
+                    type:type!='alert'
                 });
                 return self;
             }
 
             function showConfirm(options) {
-                var confirm = $txToast._createPopup(options);
+                var confirm = $txToast._createPopup(options,'confirm');
                 $timeout(function () {
                     doShow();
                 }, 50)
                 function doShow() {
                     confirm.show()
+                }
+
+            }
+            function showAlert(options) {
+                var alert = $txToast._createPopup(options,'alert');
+                $timeout(function () {
+                    doShow();
+                }, 50)
+                function doShow() {
+                    alert.show()
                 }
 
             }
@@ -374,13 +385,15 @@ var TOPTIP_TPL =
     '<span ng-bind="text"></span>' +
     '</div>' +
     '</div>'
-var CONFIRM_TPL =
-    '<div class="confirm-mast">' +
-    '<div class="confirm-container">' +
-    '<div class="confirm-hd" ng-bind="title"></div>' +
-    '<div class="confirm-bd" ng-bind-html="content|trusAstHtml"></div>' +
-    '<div class="confirm-fd">' +
-    '<div class="box" ng-click="cancelBtn()" ng-bind="cancelText"></div>' +
+var POPUP_TPL =
+    '<div class="popup-mast">' +
+    '<div class="popup-container">' +
+    '<div class="popup-hd" ng-bind="title"></div>' +
+    '<div class="popup-bd" ng-bind-html="content|trusAstHtml"></div>' +
+    '<div class="popup-fd">' +
+    '<div class="box cancel" ng-if="type"' +
+    'ng-click="cancelBtn()" ' +
+    'ng-bind="cancelText"></div>' +
     '<div class="box" ng-click="confirmBtn()" ng-bind="confirmText"></div>' +
     '</div>' +
     '</div>' +

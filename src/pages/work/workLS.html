@@ -28,21 +28,24 @@
                     </div>
                     <div class="detail-wrapper">
                         <div class="number-wrapper">
-                            <div class="number no-watch">
+                            <div class="number no-watch"
+                                 ng-click="getWeiNum(work.type,'findUnreadHWS','noreadstu',work.id,work.class_id,'未读',work.noWatch)">
                                 <p ng-bind="work.noWatch"></p>
                                 <p>未读</p>
                             </div>
-                            <div class="number no-submit">
+                            <div class="number no-submit"
+                                 ng-click="getWeiNum(work.type,'findUncommittedHWS','nosubmitstu',work.id,work.class_id,'未交',work.noSubmit)">
                                 <p ng-bind="work.noSubmit"></p>
                                 <p>未交</p>
                             </div>
-                            <div class="number no-correct">
+                            <div class="number no-correct"
+                                 ng-click="getWeiNum(work.type,'findUncorrectHWS','nosubmitstu',work.id,work.class_id,'未批',work.noCorrect)">
                                 <p ng-bind="work.noCorrect"></p>
                                 <p>未批</p>
                             </div>
                         </div>
                         <div class="del-wrapper">
-                            <img ng-click="delTKWork($parent.$index,$index,work.id)"
+                            <img ng-click="delWork($parent.$index,$index,work.type,work.id,work.class_id)"
                                  class="tag"
                                  src="./images/icon/tag-trash.png">
                         </div>
@@ -53,8 +56,13 @@
         <div class="more-wrapper"
              ng-class="{'no-more':more=='no'}"
              ng-click="getWorkList()">
-            <span ng-if="more!='no'">点击加载更多</span>
-            <span ng-if="more=='no'">没有更多数据</span>
+            <div ng-if="more!='no'">
+                <span>点击加载更多</span>
+                <span class="square first"></span>
+                <span class="square second"></span>
+                <span class="square third"></span>
+            </div>
+            <div ng-if="more=='no'">没有更多数据</div>
         </div>
     </div>
 </div>

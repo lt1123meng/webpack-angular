@@ -13,7 +13,7 @@
       padding: 6px;
       background-color: #fff;
       border-radius: 6px;
-      box-shadow: 0 0 8px rgba(7,17,27,0.2);
+      box-shadow: 0 0 8px rgba(7, 17, 27, 0.2);
       .date-wrapper {
         line-height: 30px;
         font-size: 15px;
@@ -26,22 +26,22 @@
           .tag-wrapper {
             flex: 0 0 32px;
             -webkit-flex: 0 0 32px;
-            .tag{
+            .tag {
               width: 26px;
             }
           }
           .info-wrapper {
             flex: 1;
             -webkit-flex: 1;
-            .work-name{
+            .work-name {
               font-size: 15px;
               font-weight: bold;
               line-height: 30px;
             }
-            .class-name{
+            .class-name {
               line-height: 26px;
             }
-            .time{
+            .time {
               font-size: 13px;
               color: @light-grey;
             }
@@ -63,13 +63,13 @@
                 vertical-align: top;
                 font-size: 12px;
                 border-radius: 4px;
-                &:nth-child(1){
+                &:nth-child(1) {
                   background-color: @red-color;
                 }
-                &:nth-child(2){
+                &:nth-child(2) {
                   background-color: @common-color;
                 }
-                &:nth-child(3){
+                &:nth-child(3) {
                   background-color: @green-color;
                 }
               }
@@ -77,7 +77,7 @@
             .del-wrapper {
               margin-top: 6px;
               text-align: right;
-              .tag{
+              .tag {
                 padding: 4px 8px;
                 width: 20px;
                 vertical-align: top;
@@ -87,14 +87,92 @@
         }
       }
     }
-    .more-wrapper{
+    .more-wrapper {
       padding: 12px;
       color: @common-color;
       text-align: center;
       font-size: 15px;
-      &.no-more{
+      &.no-more {
         color: @light-grey;
       }
+      .square {
+        display: inline-block;
+        position: relative;
+        top: -2px;
+        width: 7px;
+        height: 7px;
+        background-color: #4da3e0;
+        border-radius: 50%;
+        &.first {
+          animation: loading .3s;
+          -webkit-animation: loading .3s;
+          -moz-animation: loading .3s;
+          -o-animation: loading .3s;
+          animation-iteration-count: infinite;
+          -webkit-animation-iteration-count: infinite;
+          -moz-animation-iteration-count: infinite;
+          -o-animation-iteration-count: infinite;
+        }
+        &.second {
+          animation: loading 0.6s;
+          -webkit-animation: loading 0.6s;
+          -moz-animation: loading 0.6s;
+          -o-animation: loading 0.6s;
+          animation-iteration-count: infinite;
+          -webkit-animation-iteration-count: infinite;
+          -moz-animation-iteration-count: infinite;
+          -o-animation-iteration-count: infinite;
+        }
+        &.third {
+          animation: loading 0.9s;
+          -webkit-animation: loading 0.9s;
+          -moz-animation: loading 0.9s;
+          -o-animation: loading 0.9s;
+          animation-iteration-count: infinite;
+          -webkit-animation-iteration-count: infinite;
+          -moz-animation-iteration-count: infinite;
+          -o-animation-iteration-count: infinite;
+        }
+      }
     }
+  }
+}
+
+@keyframes loading {
+  from {
+    opacity: 1
+  }
+  to {
+    opacity: 0.3
+  }
+}
+
+@-moz-keyframes loading /* Firefox */
+{
+  from {
+    opacity: 1
+  }
+  to {
+    opacity: 0.3
+  }
+}
+
+@-webkit-keyframes loading /* Safari 和 Chrome */
+{
+  from {
+    opacity: 1
+  }
+  to {
+    opacity: 0.3
+  }
+}
+
+@-o-keyframes loading /* Opera */
+{
+  from {
+    opacity: 1
+  }
+  to {
+    opacity: 0.3
   }
 }
