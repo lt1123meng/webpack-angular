@@ -6,24 +6,29 @@ var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var CompressionWebpackPlugin = require('compression-webpack-plugin')
 var path = require('path');
-
 // var publicPath = 'http://localhost:3000/';
 var hotMiddlewareScript = 'webpack-hot-middleware/client?reload=true';
+// 单独打包
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 
 var devConfig = {
     context: path.join(__dirname),
     entry: {
-        page1: ['./app/index.js']
+        app: ['./app/index.js'],
         // page1: ['./app/index.js', hotMiddlewareScript]
+        // vendor: ['angular-ui-router', 'oclazyload']
+
     },
     output: {
-        filename: '[hash].js',
+        filename: '[name]-[hash].js',
         path: path.resolve('./dist'),
     },
     externals: {
         "angular": "angular",
-        "ui-router": "ui-router",
-        "oc.lazyLoad":"oc.lazyLoad"
+        "angular-ui-router": "angular",
+        "oclazyload": "angular",
+        "moment": "moment"
     },
     devtool: 'source-map',
     module: {
@@ -41,19 +46,23 @@ var devConfig = {
                 ]
             }, {
                 test: /\.css$/,
-                use: [
-                    "style-loader",
-                    "css-loader",
-                ]
+                use: ExtractTextPlugin.extract({
+                    fallback: "style-loader",
+                    use: "css-loader"
+                })
             }, {
                 test: /\.less/,
-                use: [
-                    "style-loader",
-                    "css-loader",
-                    "less-loader",
-                ]
+                use: ExtractTextPlugin.extract({
+                    fallback: "style-loader",
+                    use: [
+                        "css-loader",
+                        "postcss-loader",
+                        "less-loader",
+                    ]
+                }),
+
             }, {
-                test: /\.(png|jpg|ttf)$/,
+                test: /\.(png|jpg|jpegjpg|ttf)$/,
                 use: [
                     "url-loader",
                     'image-webpack-loader'
@@ -76,12 +85,19 @@ var devConfig = {
         //     threshold: 10240,
         //     minRatio: 0.8
         // }),
+        // new webpack.optimize.CommonsChunkPlugin({
+        // names: ['vendor'],
+        // }),
+        new ExtractTextPlugin({
+            filename: '[name].[contenthash].css'
+        }),
         new webpack.HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
             title: 'lt&lx',
             filename: 'index.html',
             template: 'index.html',
             inject: true,
+            // chunks: ['app', 'vendor'],
             minify: {
                 removeComments: true,
                 collapseWhitespace: true,

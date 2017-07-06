@@ -81,7 +81,6 @@ indexApp
             replace: true,
             link: function (scope, element, attr, rootScope) {
                 require('./component/calendar/calendar.less')
-                var moment = require('moment');
                 var selectMonent;
                 var currentMonent;
                 var prevMonent;
