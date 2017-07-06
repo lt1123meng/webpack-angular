@@ -3,8 +3,8 @@
  */
 
 require('./func.less')
-var indexApp = require('../../main');
-indexApp
+require('../index/index.less')
+angular.module('func', [])
     .controller('funcCtrl', function ($scope, $http, $state, $rootScope, $initData, $initBaseInfo, $initIntegrate) {
         if (!$rootScope.info) {
             $initBaseInfo.init()

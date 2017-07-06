@@ -8,5 +8,11 @@ var angular = require('angular')
 require('angular-ui-router')
 require('oclazyload')
 require('./framework/tx/angular-tx')
-var indexApp = angular.module('indexApp', ['oc.lazyLoad', 'ui.router', 'tx']);
-module.exports = indexApp
+angular.module('indexApp',
+    [
+        'oc.lazyLoad',
+        'ui.router',
+        'tx',
+        require('./route/index'),
+        require('./common')
+    ]);

@@ -1,9 +1,8 @@
 /**
  * Created by LX on 2017/5/18.
  */
-import indexApp from '../main';
-
-indexApp.config(function ($stateProvider, $urlRouterProvider) {
+angular.module('route', [])
+    .config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise("pre");
     $stateProvider
         .state("pre", {
@@ -22,7 +21,7 @@ indexApp.config(function ($stateProvider, $urlRouterProvider) {
                     require.ensure(['../pages/pre/pre.js'], function () {
                         var mod = require('../pages/pre/pre.js');
                         $ocLazyLoad.inject({
-                            name: 'indexApp'
+                            name: 'route'
                         });
                         deferred.resolve(mod.controller);
                     }, 'pre-ctrl');
@@ -50,7 +49,7 @@ indexApp.config(function ($stateProvider, $urlRouterProvider) {
                     require.ensure(['../pages/index/index.js'], function () {
                         var mod = require('../pages/index/index.js');
                         $ocLazyLoad.inject({
-                            name: 'indexApp'
+                            name: 'route'
                         });
                         deferred.resolve(mod.controller);
                     }, 'home-ctrl');
@@ -77,7 +76,7 @@ indexApp.config(function ($stateProvider, $urlRouterProvider) {
                     require.ensure(['../pages/func/func'], function () {
                         var mod = require('../pages/func/func');
                         $ocLazyLoad.inject({
-                            name: 'indexApp'
+                            name: 'route'
                         });
                         deferred.resolve(mod.controller);
                     }, 'funcCtrl');
@@ -104,7 +103,7 @@ indexApp.config(function ($stateProvider, $urlRouterProvider) {
                     require.ensure(['../pages/me/me.js'], function () {
                         var mod = require('../pages/me/me.js');
                         $ocLazyLoad.inject({
-                            name: 'indexApp'
+                            name: 'route'
                         });
                         deferred.resolve(mod.controller);
                     }, 'meCtrl');
@@ -130,7 +129,7 @@ indexApp.config(function ($stateProvider, $urlRouterProvider) {
                     require.ensure(['../pages/me/me.js'], function () {
                         var mod = require('../pages/me/me.js');
                         $ocLazyLoad.inject({
-                            name: 'indexApp'
+                            name: 'route'
                         });
                         deferred.resolve(mod.controller);
                     }, 'meCtrl');
@@ -156,7 +155,7 @@ indexApp.config(function ($stateProvider, $urlRouterProvider) {
                     require.ensure(['../pages/me/me.js'], function () {
                         var mod = require('../pages/me/me.js');
                         $ocLazyLoad.inject({
-                            name: 'indexApp'
+                            name: 'route'
                         });
                         deferred.resolve(mod.controller);
                     }, 'meCtrl');
@@ -182,7 +181,7 @@ indexApp.config(function ($stateProvider, $urlRouterProvider) {
                     require.ensure(['../pages/me/me.js'], function () {
                         var mod = require('../pages/me/me.js');
                         $ocLazyLoad.inject({
-                            name: 'indexApp'
+                            name: 'route'
                         });
                         deferred.resolve(mod.controller);
                     }, 'meCtrl');
@@ -208,7 +207,7 @@ indexApp.config(function ($stateProvider, $urlRouterProvider) {
                     require.ensure(['../pages/me/me.js'], function () {
                         var mod = require('../pages/me/me.js');
                         $ocLazyLoad.inject({
-                            name: 'indexApp'
+                            name: 'route'
                         });
                         deferred.resolve(mod.controller);
                     }, 'meCtrl');
@@ -235,7 +234,7 @@ indexApp.config(function ($stateProvider, $urlRouterProvider) {
                     require.ensure(['../pages/class/class.js'], function () {
                         var mod = require('../pages/class/class.js');
                         $ocLazyLoad.inject({
-                            name: 'indexApp'
+                            name: 'route'
                         });
                         deferred.resolve(mod.controller);
                     }, 'meCtrl');
@@ -261,7 +260,7 @@ indexApp.config(function ($stateProvider, $urlRouterProvider) {
                     require.ensure(['../pages/class/class.js'], function () {
                         var mod = require('../pages/class/class.js');
                         $ocLazyLoad.inject({
-                            name: 'indexApp'
+                            name: 'route'
                         });
 
                         deferred.resolve(mod.controller);
@@ -288,7 +287,7 @@ indexApp.config(function ($stateProvider, $urlRouterProvider) {
                     require.ensure(['../pages/class/class.js'], function () {
                         var mod = require('../pages/class/class.js');
                         $ocLazyLoad.inject({
-                            name: 'indexApp'
+                            name: 'route'
                         });
                         deferred.resolve(mod.controller);
                     }, 'meCtrl');
@@ -315,7 +314,7 @@ indexApp.config(function ($stateProvider, $urlRouterProvider) {
                     require.ensure(['../pages/work/work.js'], function () {
                         var mod = require('../pages/work/work.js');
                         $ocLazyLoad.inject({
-                            name: 'indexApp'
+                            name: 'route'
                         });
                         deferred.resolve(mod.controller);
                     }, 'meCtrl');

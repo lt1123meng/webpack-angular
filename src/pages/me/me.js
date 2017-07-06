@@ -2,8 +2,7 @@
  * Created by LX on 2017/5/23.
  */
 require('./me.less')
-var indexApp = require('../../main');
-indexApp
+angular.module('me', [])
     .controller('meCtrl', function ($scope, $http, $state, $rootScope, $initData, $initBaseInfo, $initIntegrate) {
         if (!$rootScope.info) {
             $initBaseInfo.init()

@@ -3,6 +3,9 @@
  */
 module.exports = {
     plugins: [
-        require('autoprefixer')
+        require('autoprefixer'),
+        require('postcss-import')({
+            addDependencyTo: require('webpack')
+        }),
     ]
 }

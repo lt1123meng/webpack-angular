@@ -2,7 +2,8 @@
  * Created by LX on 2017/5/18.
  */
 require('./pre.less')
-require('../../main')
+
+angular.module('pre', [])
     .controller('preCtrl', function ($location, $scope, $http, $state, $rootScope, $initBaseInfo) {
         var oid = $location.search().oid;
         if (oid) {

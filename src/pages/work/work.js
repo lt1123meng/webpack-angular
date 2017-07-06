@@ -2,7 +2,7 @@
  * Created by LX on 2017/6/15.
  */
 require('./work.less')
-require('../../main')
+angular.module('work', [])
     .controller('workLSCtrl',
         function ($scope, $server, $txPopup, $txToptip) {
             var disable = false

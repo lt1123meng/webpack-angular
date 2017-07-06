@@ -2,8 +2,7 @@
  * Created by LX on 2017/6/6.
  */
 require('./class.less')
-var indexApp = require('../../main');
-indexApp
+angular.module('class', [])
     .controller('classCtrl', function ($server, $scope, $http, $state, $rootScope, $initData, $initBaseInfo, $initIntegrate) {
         $server.getClassList().then(function (data) {
             if (data.status != 200) {

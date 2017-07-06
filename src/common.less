@@ -77,6 +77,59 @@ p {
   cursor: not-allowed
 }
 
+.header-common-wrapper {
+  .box {
+    display: flex;
+    display: -webkit-flex;
+    background-color: #fff;
+    text-align: center;
+    line-height: 24px;
+    font-weight: bold;
+    .inner-box {
+      flex: 1;
+      -webkit-flex: 1;
+      padding: 8px 0;
+      &.active {
+        color: @common-color;
+        .inner {
+          .text {
+            border-bottom: 2px solid @common-color;
+          }
+        }
+      }
+      .inner {
+        border-right: 1px solid @border-color;
+        .text {
+          padding: 8px;
+          margin-top: -8px;
+          margin-bottom: -8px;
+          display: inline-block;
+          .recharge {
+            display: inline-block;
+            width: 22px;
+            height: 22px;
+            line-height: 22px;
+            background-color: rgba(77, 163, 224, 0.4);
+            color: @common-color;
+            border: 0.2px solid @common-color;
+          }
+
+        }
+      }
+      &:last-child {
+        .inner {
+          border-right: 0px;
+        }
+      }
+    }
+  }
+}
+
+.ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
 
 
 

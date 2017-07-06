@@ -8,8 +8,7 @@ import footerJZTPL from './component/footer/footerJZ.html'
 import searchTPL from './component/search/search.html'
 import mastTPL from './component/mast/mast.html'
 import calendarTPL from './component/calendar/calendar.html'
-var indexApp = require('./main');
-indexApp
+module.exports = angular.module('common', [])
     .directive('dirBack', function ($state) {
         return {
             restrict: 'E',
@@ -727,3 +726,4 @@ indexApp
             }
         }
     })
+    .name

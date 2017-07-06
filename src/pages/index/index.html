@@ -47,9 +47,9 @@
                     </div>
                 </div>
                 <div class="detail-wrapper">
-                    <p class="subject" ng-bind="item.roleName"></p>
-                    <p class="class" ng-bind="item.className"></p>
-                    <p class="detail" ng-bind="item.content"></p>
+                    <p class="subject ellipsis" ng-bind="item.roleName"></p>
+                    <p class="class ellipsis" ng-bind="item.className"></p>
+                    <p class="detail ellipsis" ng-bind="item.content"></p>
                 </div>
             </div>
         </div>
@@ -71,7 +71,7 @@
         </div>
     </div>
 </div>
-<div class="choose-stu-popup-wrapper" ng-show="!!Popup.chooseStu">
+<div class="choose-stu-popup-wrapper ellipsis" ng-show="!!Popup.chooseStu">
     <div class="content-wrapper">
         <div class="items-wrapper" ng-repeat="item in JZvipInfo">
             <div class="item" ng-click="chooseThisStu($index)">

@@ -10,12 +10,14 @@ var path = require('path');
 var hotMiddlewareScript = 'webpack-hot-middleware/client?reload=true';
 // 单独打包
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+// 压缩css
+var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 
 var devConfig = {
     context: path.join(__dirname),
     entry: {
-        app: ['./app/index.js'],
+        app: ['./src/main.js'],
         // page1: ['./app/index.js', hotMiddlewareScript]
         // vendor: ['angular-ui-router', 'oclazyload']
 
@@ -64,7 +66,7 @@ var devConfig = {
             }, {
                 test: /\.(png|jpg|jpegjpg|ttf)$/,
                 use: [
-                    "url-loader",
+                    "url-loader?limit=8192&name=img/[name].[ext]",
                     'image-webpack-loader'
                 ]
             }]
@@ -73,8 +75,7 @@ var devConfig = {
         // new webpack.optimize.UglifyJsPlugin({
         //     compress: {
         //         warnings: false
-        //     },
-        //     sourceMap: true
+        //     }
         // }),
         // new CompressionWebpackPlugin({
         //     asset: '[path].gz[query]',
@@ -90,6 +91,12 @@ var devConfig = {
         // }),
         new ExtractTextPlugin({
             filename: '[name].[contenthash].css'
+        }),
+        new OptimizeCssAssetsPlugin({
+            assetNameRegExp: /\.optimize\.less$/g,
+            cssProcessor: require('cssnano'),
+            cssProcessorOptions: { discardComments: {removeAll: true } },
+            canPrint: true
         }),
         new webpack.HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({

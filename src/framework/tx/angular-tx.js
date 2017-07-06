@@ -1,18 +1,14 @@
 /**
  * Created by LX on 2017/6/8.
  */
-var TXMoudle = angular.module('tx', []),
-    extend = angular.extend,
+var extend = angular.extend,
     jqLite = angular.element,
-
-
     forEach = angular.forEach,
     isDefined = angular.isDefined,
     isNumber = angular.isNumber,
     isString = angular.isString,
     noop = angular.noop;
-
-TXMoudle
+angular.module('tx', [])
 /**
  * input输入框表单
  * @ngdoc directive

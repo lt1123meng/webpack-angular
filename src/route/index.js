@@ -1,8 +1,6 @@
 /**
  * Created by LX on 2017/5/18.
  */
-var indexApp = require('../main');
-console.log(indexApp)
 require('../pages/pre/pre');
 require('../pages/index/index');
 require('../pages/me/me');
@@ -21,7 +19,8 @@ import classTPL from '../pages/class/class.html';
 import shareClassCodeTPL from '../pages/class/shareClassCode.html';
 import addClassTPL from '../pages/class/addClass.html';
 import workLSTPL from '../pages/work/workLS.html';
-indexApp
+module.exports=
+angular.module('route', ['pre','home','me','func','class','work'])
     .config(function ($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise("pre");
         $stateProvider
@@ -91,3 +90,4 @@ indexApp
                 template: workLSTPL,
             })
     })
+    .name
